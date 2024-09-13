@@ -1,0 +1,17 @@
+from pyvis.network import Network
+
+# Initialize PyVis network
+net = Network(height='750px', width='100%', notebook=True)
+
+# Add nodes and edges
+for node in G.nodes():
+    if node in df['INP_DTL_OCC_TYPE_CD'].values:
+        net.add_node(node, label=str(node), color='red')
+    else:
+        net.add_node(node, label=str(node), color='blue')
+
+for edge in G.edges():
+    net.add_edge(edge[0], edge[1])
+
+# Generate and display the network
+net.show('obsidian_graph.html')
