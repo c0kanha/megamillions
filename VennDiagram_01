@@ -1,0 +1,53 @@
+# Defining the names for the circles
+circle_a_name = "Circle A"
+circle_b_name = "Circle B"
+circle_c_name = "Circle C"
+
+# Defining the names for the intersections
+intersection_ab_excluding_c = "Intersection of Circle A and Circle B (excluding C)"
+intersection_ac_excluding_b = "Intersection of Circle A and Circle C (excluding B)"
+intersection_bc_excluding_a = "Intersection of Circle B and Circle C (excluding A)"
+central_intersection_abc = "Intersection of Circle A, Circle B, and Circle C (the central intersection)"
+
+# Creating a dictionary to hold the names for easy reference
+circle_intersections = {
+    "Circle Names": {
+        "Circle A": circle_a_name,
+        "Circle B": circle_b_name,
+        "Circle C": circle_c_name,
+    },
+    "Intersection Names": {
+        "A and B (excluding C)": intersection_ab_excluding_c,
+        "A and C (excluding B)": intersection_ac_excluding_b,
+        "B and C (excluding A)": intersection_bc_excluding_a,
+        "A, B, and C (central)": central_intersection_abc,
+    },
+}
+
+circle_intersections
+
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn3
+
+# Define the labels for the circles and their intersections
+labels = {
+    '100': 'Circle A',
+    '010': 'Circle B',
+    '001': 'Circle C',
+    '110': 'A ∩ B (excluding C)',
+    '101': 'A ∩ C (excluding B)',
+    '011': 'B ∩ C (excluding A)',
+    '111': 'A ∩ B ∩ C'
+}
+
+# Create a Venn diagram for the three circles
+plt.figure(figsize=(8, 8))
+venn = venn3(subsets=(1, 1, 1, 1, 1, 1, 1), set_labels=('Circle A', 'Circle B', 'Circle C'))
+
+# Set the labels for the intersections
+for key, text in labels.items():
+    venn.get_label_by_id(key).set_text(text)
+
+# Add a title to the diagram
+plt.title('Venn Diagram of Three Circles and Their Intersections')
+plt.show()
