@@ -1,0 +1,21 @@
+@startuml
+
+start
+
+if (rc = 'rej') then
+    if (turnoff = 'y') then
+        if (days > 120) then
+            :SET OA TO TRUE;
+        else
+            :SET AA TO TRUE;
+        endif
+    else
+        :SET VA TO TRUE;
+    endif
+else
+    :SET VA TO TRUE;
+endif
+
+end
+
+@enduml
